@@ -22,7 +22,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 ## Install
 
 ```bash
-git clone <your-repository-url> misc-generic
+git clone https://github.com/bettyorganero/misc-generic.git
 cd misc-generic
 npm install
 ```
