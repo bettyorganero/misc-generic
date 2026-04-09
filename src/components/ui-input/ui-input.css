@@ -1,0 +1,23 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+
+:host {
+  @apply flex justify-center items-center;
+}
+
+.ui-input {
+  @apply w-full bg-transparent border-0 outline-none;
+  @apply text-base text-secondary-600 placeholder:text-gray-300;
+}
+
+.ui-input[aria-invalid='true'] {
+  @apply text-error-500;
+}
+
+.ui-input--valid {
+  
+}
+
+.ui-input:disabled {
+  @apply cursor-not-allowed;
+}

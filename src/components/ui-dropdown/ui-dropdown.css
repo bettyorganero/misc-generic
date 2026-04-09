@@ -1,0 +1,102 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+
+:host {
+  @apply block w-full;
+}
+
+.dropdown {
+  @apply relative w-full;
+}
+
+.dropdown__trigger {
+  @apply w-full flex items-center justify-between gap-2 text-secondary-600 bg-transparent border-0 p-0.5 text-left cursor-pointer;
+  font: inherit;
+}
+
+.dropdown__trigger:disabled {
+  @apply opacity-60 pointer-events-none;
+}
+
+.dropdown__chevron {
+  @apply text-secondary-600 transition-transform duration-200;
+}
+
+.dropdown__chevron--open {
+  transform: rotate(180deg);
+}
+
+.dropdown__menu {
+  @apply absolute left-0 right-0 z-30 bg-white rounded-lg;
+  @apply flex flex-col overflow-hidden m-0 p-0;
+  top: calc(100% + 1.8rem);
+  width: calc(100% + 5rem);
+  left: -2.5rem;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s ease;
+}
+
+ .dropdown--no-prefix.dropdown--no-suffix .dropdown__menu {
+  width: calc(100% + 1.75rem);
+  left: -1rem;
+}
+
+.dropdown--no-prefix.dropdown--no-suffix .dropdown__item {
+  @apply pl-1.5;
+}
+
+.dropdown--no-suffix .dropdown__menu {
+  width: calc(100% + 3.25rem);
+  left: -2.5rem;
+}
+
+.dropdown--no-prefix .dropdown__menu {
+  width: calc(100% + 3.5rem);
+  left: -1rem;
+}
+
+.dropdown--no-prefix .dropdown__item {
+  @apply pl-1.5;
+}
+
+.dropdown__menu--open {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.dropdown__item {
+  @apply m-0 p-0 pl-7 hover:bg-gray-50 cursor-pointer;
+}
+
+.dropdown__item + .dropdown__item {
+  border-top: 1px solid var(--color-gray-100);
+}
+
+.dropdown__option {
+  @apply w-full px-3.5 py-3 text-secondary-600 bg-transparent border-0 text-left;
+  @apply inline-flex items-center gap-2;
+  font: inherit;
+}
+
+.dropdown__checkbox {
+  @apply h-4 w-4 rounded-sm border border-gray-300 bg-gray-200 inline-flex items-center justify-center shrink-0;
+}
+
+.dropdown__checkbox--checked {
+  background-image: var(--gradient-primary);
+  border-color: transparent;
+}
+
+.dropdown__check-icon {
+  @apply text-white text-[10px] opacity-0;
+}
+
+.dropdown__checkbox--checked .dropdown__check-icon {
+  @apply opacity-100;
+}

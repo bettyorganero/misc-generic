@@ -1,0 +1,142 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+
+:host {
+  @apply block w-full;
+}
+
+.btn{
+  @apply w-fit flex items-center justify-center px-1 py-1;
+  @apply leading-none uppercase rounded-full;
+  @apply transition-all duration-400 ease-in-out;
+  @apply active:scale-95 hover:scale-110 cursor-pointer hover:opacity-60;
+  @apply disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100;
+}
+
+.btn__label{
+  @apply rounded-full bg-white font-medium px-4 py-3 flex items-center justify-center;  
+}
+
+.w-full{
+  @apply w-full;
+}
+
+/*
+----------------------------------------------
+Varients
+----------------------------------------------
+*/
+
+.btn--primary{
+  @apply text-gray-500 animate-background border-[0] bg-secondary bg-[length:_250%_200%] p-1 [animation-duration:_3s];
+}
+
+.btn--secondary{
+  @apply text-gray-500 border-[0] bg-sunset bg-[length:_250%_200%] p-1 [animation-duration:_3s];
+}
+
+.btn--ghost{
+  @apply bg-transparent text-primary-500 border-[0];
+}
+
+.btn--ghost .btn__label-text-copy{
+  @apply underline underline-offset-4 capitalize;
+}
+
+.btn--only-icon{
+  @apply bg-primary border-[0];
+  @apply rounded-full p-3;
+}
+
+.btn__label-text {
+  @apply font-bold flex flex-row flex-wrap items-center justify-center gap-2;
+}
+
+.btn__loading {
+  @apply inline-flex shrink-0 items-center justify-center text-current;
+}
+
+.btn__loading--only-icon {
+  @apply text-2xl;
+}
+
+.btn--only-icon .btn__label{
+  @apply bg-transparent;
+  @apply inline-flex items-center justify-center;
+  @apply text-white;
+}
+
+.btn__label{
+  @apply w-full
+}
+
+
+/*
+----------------------------------------------
+Sizing
+----------------------------------------------
+*/
+
+  .btn.small{
+    @apply text-sm;
+  }
+
+  .btn.small .btn__label{
+    @apply px-6 py-3;
+  }
+
+  .btn.medium .btn__label{
+    @apply px-8 py-4;
+  }
+
+  .btn.medium{
+    @apply text-base;
+  }
+
+  .btn.large .btn__label{
+    @apply px-10 py-5;
+  }
+
+  .btn.large{
+    @apply text-lg;
+  }
+
+  .btn--only-icon.small{
+    @apply w-12 h-12 text-lg;
+  }
+
+  .btn--only-icon.medium{
+    @apply w-15 h-15 text-xl;
+  }
+
+  .btn--only-icon.large{
+    @apply w-18 h-18 text-2xl;
+  }
+
+  .btn.small .btn__loading:not(.btn__loading--only-icon) i {
+    @apply text-sm;
+  }
+  
+  .btn.medium .btn__loading:not(.btn__loading--only-icon) i {
+    @apply text-base;
+  }
+  
+  .btn.large .btn__loading:not(.btn__loading--only-icon) i {
+    @apply text-lg;
+  }
+  
+/*
+----------------------------------------------
+Icon Position
+----------------------------------------------
+*/
+
+.btn__icon-left,
+.btn__icon-right {
+  @apply inline-flex shrink-0 items-center justify-center;
+}
+
+.btn__icon-center{
+  @apply text-center;
+}
+

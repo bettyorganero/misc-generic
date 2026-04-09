@@ -1,0 +1,76 @@
+@reference "tailwindcss";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.field {
+  @apply flex flex-col gap-1.5;
+}
+
+.field__label {
+  @apply text-base font-medium text-gray-500 px-7;
+}
+
+.field__required {
+  @apply ml-1 text-error-500;
+}
+
+.field__content {
+  @apply rounded-full bg-primary;
+}
+
+:host(:focus-within) .field__content {
+  @apply bg-secondary;
+}
+
+.field__control {
+  @apply flex items-center gap-2 rounded-full bg-white px-7 py-3;
+  @apply transition-colors duration-200;
+  @apply mb-2;
+}
+
+.field__input {
+  @apply flex-1 min-w-0;
+}
+
+.field__prefix,
+.field__suffix {
+  @apply inline-flex shrink-0 mt-1 items-center justify-center text-secondary-600;
+}
+
+.field--invalid .field__content {
+  @apply bg-none bg-error-500 text-error-500;
+}
+
+.field--invalid .field__prefix,
+.field--invalid .field__suffix {
+  @apply text-error-500;
+}
+
+.field--valid .field__content {
+  @apply bg-none bg-success-600 text-success-600;
+}
+
+.field--valid .field__prefix,
+.field--valid .field__suffix {
+  @apply text-success-600;
+}
+
+.field__help {
+  @apply text-sm bg-gray-50 text-gray-600 px-3 font-normal w-fit py-1.5 ml-7 rounded-sm;
+}
+
+.field__error {
+  @apply text-sm bg-gray-50 text-error-500 font-normal px-3 w-fit py-1.5 ml-7 rounded-sm;
+}
+
+.field--disabled .field__help,
+.field--disabled .field__error,
+.field--disabled .field__content,
+.field--disabled .field__prefix,
+.field--disabled .field__suffix,
+.field--disabled .field__control {
+  @apply opacity-40;
+}

@@ -1,0 +1,24 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.ui-textarea {
+  @apply w-full min-h-[5rem] resize-y bg-transparent border-0 outline-none;
+  @apply text-base text-secondary-600 placeholder:text-gray-300 font-sans;
+}
+
+.ui-textarea[aria-invalid='true'] {
+  @apply text-error-500;
+}
+
+.ui-textarea--valid {
+  
+}
+
+.ui-textarea:disabled {
+  @apply cursor-not-allowed;
+}

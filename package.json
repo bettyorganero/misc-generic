@@ -7,20 +7,21 @@
   "types": "dist/types/index.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/misc-generic/misc-generic.esm.js",
+  "unpkg": "dist/misc-base/misc-base.esm.js",
   "exports": {
     ".": {
-      "import": "./dist/misc-generic/misc-generic.esm.js",
-      "require": "./dist/misc-generic/misc-generic.cjs.js"
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/misc-base/misc-base.esm.js",
+      "require": "./dist/misc-base/misc-base.cjs.js"
     },
     "./my-component": {
-      "import": "./dist/components/my-component.js",
-      "types": "./dist/components/my-component.d.ts"
+      "types": "./dist/components/my-component.d.ts",
+      "import": "./dist/components/my-component.js"
     },
     "./loader": {
-      "import": "./loader/index.js",
-      "require": "./loader/index.cjs",
-      "types": "./loader/index.d.ts"
+      "types": "./dist/loader/index.d.ts",
+      "import": "./dist/loader/index.js",
+      "require": "./dist/loader/index.cjs.js"
     }
   },
   "repository": {
@@ -28,23 +29,50 @@
     "url": "https://github.com/stenciljs/component-starter.git"
   },
   "files": [
-    "dist/",
-    "loader/"
+    "dist/"
   ],
   "scripts": {
+    "kill:6006": "node -e \"const { execSync } = require('child_process'); let out=''; try { out = execSync('lsof -ti tcp:6006', { stdio: ['ignore','pipe','ignore'] }).toString().trim(); } catch {} if (!out) process.exit(0); const pids = out.split(/\\s+/).filter(Boolean); execSync('kill -9 ' + pids.join(' '), { stdio: 'ignore' });\"",
     "build": "stencil build",
+    "build:watch": "stencil build --watch",
     "start": "stencil build --dev --watch --serve",
+    "tailwind:build": "tailwindcss -i ./src/global/tailwind.css -o ./src/global/tailwind.generated.css",
+    "tailwind:watch": "tailwindcss -i ./src/global/tailwind.css -o ./src/global/tailwind.generated.css --watch",
     "test": "stencil-test",
     "test:watch": "stencil-test --watch",
-    "generate": "stencil generate"
+    "generate": "stencil generate",
+    "storybook": "storybook dev -p 6006",
+    "storybook:watch": "nodemon --watch dist/loader --watch dist/components --ext js,jsx,ts,tsx,css,scss --exec \"storybook dev -p 6006 --no-open\"",
+    "dev": "concurrently -k -n TAILWIND,STENCIL,STORYBOOK -c green,blue,magenta \"npm run tailwind:watch\" \"npm run build:watch\" \"wait-on dist/loader/index.js src/global/tailwind.generated.css && npm run storybook:watch\"",
+    "dev:clean": "npm run kill:6006 && npm run dev",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "@stencil-community/postcss": "^2.2.0",
     "@stencil/core": "^4.27.1 || ^5.0.0-0",
+    "@stencil/sass": "^3.2.3",
     "@stencil/vitest": "^1.8.3",
+    "@storybook/addon-a11y": "^10.3.3",
+    "@storybook/addon-docs": "^10.3.3",
+    "@storybook/web-components-vite": "^10.3.3",
+    "@tailwindcss/cli": "^4.2.2",
+    "@types/autoprefixer": "^10.2.4",
     "@types/node": "^22.13.5",
     "@vitest/browser-playwright": "^4.0.0",
-    "playwright": "^1.52.0",
-    "vitest": "^4.0.0"
+    "concurrently": "^9.2.1",
+    "lit": "^3.3.2",
+    "nodemon": "^3.1.14",
+    "postcss": "^8.5.8",
+    "postcss-import": "^16.1.1",
+    "storybook": "^10.3.3",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.2",
+    "vitest": "^4.0.0",
+    "wait-on": "^9.0.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.2"
+  }
 }

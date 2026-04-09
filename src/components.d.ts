@@ -5,64 +5,1129 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { DropdownOption } from "./components/ui-dropdown/ui-dropdown";
+export { DropdownOption } from "./components/ui-dropdown/ui-dropdown";
 export namespace Components {
-    interface MyComponent {
+    interface CheckboxField {
         /**
-          * The first name
+          * @default false
          */
-        "first": string;
+        "checked": boolean;
         /**
-          * The last name
+          * @default false
          */
-        "last": string;
+        "disabled": boolean;
         /**
-          * The middle name
+          * @default ''
          */
-        "middle": string;
+        "errorMessage": string;
+        /**
+          * @default ''
+         */
+        "helpText": string;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default false
+         */
+        "required": boolean;
+    }
+    interface InputField {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage": string;
+        /**
+          * @default false
+         */
+        "hasPrefix": boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix": boolean;
+        /**
+          * @default ''
+         */
+        "helpText": string;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default false
+         */
+        "valid": boolean;
+    }
+    interface MultiselectField {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage": string;
+        /**
+          * @default false
+         */
+        "hasPrefix": boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix": boolean;
+        /**
+          * @default ''
+         */
+        "helpText": string;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default []
+         */
+        "options": MultiselectOption[];
+        /**
+          * @default 'Select options'
+         */
+        "placeholder": string;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default []
+         */
+        "values": string[];
+    }
+    interface SelectField {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage": string;
+        /**
+          * @default false
+         */
+        "hasPrefix": boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix": boolean;
+        /**
+          * @default ''
+         */
+        "helpText": string;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default []
+         */
+        "options": SelectFieldOption[];
+        /**
+          * @default 'Select one option'
+         */
+        "placeholder": string;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default false
+         */
+        "valid": boolean;
+        /**
+          * @default ''
+         */
+        "value": string;
+    }
+    interface TextareaField {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage": string;
+        /**
+          * @default false
+         */
+        "hasPrefix": boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix": boolean;
+        /**
+          * @default ''
+         */
+        "helpText": string;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * When greater than 0, shows a character counter (current / maximum) before help or error.
+          * @default 0
+         */
+        "maxLength": number;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default false
+         */
+        "valid": boolean;
+    }
+    interface UiButton {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default false
+         */
+        "fullWidth": boolean;
+        /**
+          * @default ''
+         */
+        "icon": string;
+        /**
+          * @default false
+         */
+        "iconOnly": boolean;
+        /**
+          * @default 'left'
+         */
+        "iconPosition": 'left' | 'right';
+        "label": string;
+        /**
+          * @default false
+         */
+        "loading": boolean;
+        /**
+          * @default 'medium'
+         */
+        "size": 'small' | 'medium' | 'large';
+        /**
+          * @default 'button'
+         */
+        "type": 'button' | 'submit' | 'reset';
+        /**
+          * @default 'primary'
+         */
+        "variant": 'primary' | 'secondary' | 'ghost' | 'only-icon';
+    }
+    interface UiDropdown {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default false
+         */
+        "multiple": boolean;
+        /**
+          * @default false
+         */
+        "noPrefix": boolean;
+        /**
+          * @default false
+         */
+        "noSuffix": boolean;
+        /**
+          * @default []
+         */
+        "options": DropdownOption[];
+        /**
+          * @default 'Select one option'
+         */
+        "placeholder": string;
+        /**
+          * @default ''
+         */
+        "value": string;
+        /**
+          * @default []
+         */
+        "values": string[];
+    }
+    interface UiInput {
+        /**
+          * @default ''
+         */
+        "ariaDescription": string;
+        /**
+          * @default 'off'
+         */
+        "autocomplete": string;
+        /**
+          * @default ''
+         */
+        "describedBy": string;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default ''
+         */
+        "name": string;
+        /**
+          * @default ''
+         */
+        "placeholder": string;
+        /**
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default 'text'
+         */
+        "type": 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+        /**
+          * @default false
+         */
+        "valid": boolean;
+        /**
+          * @default ''
+         */
+        "value": string;
+    }
+    interface UiTextarea {
+        /**
+          * @default ''
+         */
+        "ariaDescription": string;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * HTML `maxlength`; use with `textarea-field` when showing a maximum character counter.
+         */
+        "maxLength"?: number;
+        /**
+          * @default ''
+         */
+        "name": string;
+        /**
+          * @default ''
+         */
+        "placeholder": string;
+        /**
+          * @default false
+         */
+        "readonly": boolean;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default 3
+         */
+        "rows": number;
+        /**
+          * @default false
+         */
+        "valid": boolean;
+        /**
+          * @default ''
+         */
+        "value": string;
     }
 }
+export interface CheckboxFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLCheckboxFieldElement;
+}
+export interface MultiselectFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLMultiselectFieldElement;
+}
+export interface SelectFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSelectFieldElement;
+}
+export interface UiDropdownCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUiDropdownElement;
+}
+export interface UiInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUiInputElement;
+}
+export interface UiTextareaCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLUiTextareaElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLCheckboxFieldElementEventMap {
+        "checkedChange": boolean;
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    interface HTMLCheckboxFieldElement extends Components.CheckboxField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLCheckboxFieldElementEventMap>(type: K, listener: (this: HTMLCheckboxFieldElement, ev: CheckboxFieldCustomEvent<HTMLCheckboxFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLCheckboxFieldElementEventMap>(type: K, listener: (this: HTMLCheckboxFieldElement, ev: CheckboxFieldCustomEvent<HTMLCheckboxFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLCheckboxFieldElement: {
+        prototype: HTMLCheckboxFieldElement;
+        new (): HTMLCheckboxFieldElement;
+    };
+    interface HTMLInputFieldElement extends Components.InputField, HTMLStencilElement {
+    }
+    var HTMLInputFieldElement: {
+        prototype: HTMLInputFieldElement;
+        new (): HTMLInputFieldElement;
+    };
+    interface HTMLMultiselectFieldElementEventMap {
+        "valuesChange": string[];
+    }
+    interface HTMLMultiselectFieldElement extends Components.MultiselectField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLMultiselectFieldElementEventMap>(type: K, listener: (this: HTMLMultiselectFieldElement, ev: MultiselectFieldCustomEvent<HTMLMultiselectFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLMultiselectFieldElementEventMap>(type: K, listener: (this: HTMLMultiselectFieldElement, ev: MultiselectFieldCustomEvent<HTMLMultiselectFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLMultiselectFieldElement: {
+        prototype: HTMLMultiselectFieldElement;
+        new (): HTMLMultiselectFieldElement;
+    };
+    interface HTMLSelectFieldElementEventMap {
+        "valueChange": string;
+    }
+    interface HTMLSelectFieldElement extends Components.SelectField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSelectFieldElementEventMap>(type: K, listener: (this: HTMLSelectFieldElement, ev: SelectFieldCustomEvent<HTMLSelectFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSelectFieldElementEventMap>(type: K, listener: (this: HTMLSelectFieldElement, ev: SelectFieldCustomEvent<HTMLSelectFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSelectFieldElement: {
+        prototype: HTMLSelectFieldElement;
+        new (): HTMLSelectFieldElement;
+    };
+    interface HTMLTextareaFieldElement extends Components.TextareaField, HTMLStencilElement {
+    }
+    var HTMLTextareaFieldElement: {
+        prototype: HTMLTextareaFieldElement;
+        new (): HTMLTextareaFieldElement;
+    };
+    interface HTMLUiButtonElement extends Components.UiButton, HTMLStencilElement {
+    }
+    var HTMLUiButtonElement: {
+        prototype: HTMLUiButtonElement;
+        new (): HTMLUiButtonElement;
+    };
+    interface HTMLUiDropdownElementEventMap {
+        "valueChange": string;
+        "valuesChange": string[];
+    }
+    interface HTMLUiDropdownElement extends Components.UiDropdown, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUiDropdownElementEventMap>(type: K, listener: (this: HTMLUiDropdownElement, ev: UiDropdownCustomEvent<HTMLUiDropdownElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUiDropdownElementEventMap>(type: K, listener: (this: HTMLUiDropdownElement, ev: UiDropdownCustomEvent<HTMLUiDropdownElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUiDropdownElement: {
+        prototype: HTMLUiDropdownElement;
+        new (): HTMLUiDropdownElement;
+    };
+    interface HTMLUiInputElementEventMap {
+        "valueChange": string;
+        "fieldBlur": void;
+        "fieldFocus": void;
+    }
+    interface HTMLUiInputElement extends Components.UiInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUiInputElementEventMap>(type: K, listener: (this: HTMLUiInputElement, ev: UiInputCustomEvent<HTMLUiInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUiInputElementEventMap>(type: K, listener: (this: HTMLUiInputElement, ev: UiInputCustomEvent<HTMLUiInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUiInputElement: {
+        prototype: HTMLUiInputElement;
+        new (): HTMLUiInputElement;
+    };
+    interface HTMLUiTextareaElementEventMap {
+        "valueChange": string;
+        "fieldBlur": void;
+        "fieldFocus": void;
+    }
+    interface HTMLUiTextareaElement extends Components.UiTextarea, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLUiTextareaElementEventMap>(type: K, listener: (this: HTMLUiTextareaElement, ev: UiTextareaCustomEvent<HTMLUiTextareaElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLUiTextareaElementEventMap>(type: K, listener: (this: HTMLUiTextareaElement, ev: UiTextareaCustomEvent<HTMLUiTextareaElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLUiTextareaElement: {
+        prototype: HTMLUiTextareaElement;
+        new (): HTMLUiTextareaElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "checkbox-field": HTMLCheckboxFieldElement;
+        "input-field": HTMLInputFieldElement;
+        "multiselect-field": HTMLMultiselectFieldElement;
+        "select-field": HTMLSelectFieldElement;
+        "textarea-field": HTMLTextareaFieldElement;
+        "ui-button": HTMLUiButtonElement;
+        "ui-dropdown": HTMLUiDropdownElement;
+        "ui-input": HTMLUiInputElement;
+        "ui-textarea": HTMLUiTextareaElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
+    interface CheckboxField {
         /**
-          * The first name
+          * @default false
          */
-        "first"?: string;
+        "checked"?: boolean;
         /**
-          * The last name
+          * @default false
          */
-        "last"?: string;
+        "disabled"?: boolean;
         /**
-          * The middle name
+          * @default ''
          */
-        "middle"?: string;
+        "errorMessage"?: string;
+        /**
+          * @default ''
+         */
+        "helpText"?: string;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        "onCheckedChange"?: (event: CheckboxFieldCustomEvent<boolean>) => void;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+    }
+    interface InputField {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @default false
+         */
+        "hasPrefix"?: boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix"?: boolean;
+        /**
+          * @default ''
+         */
+        "helpText"?: string;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default false
+         */
+        "valid"?: boolean;
+    }
+    interface MultiselectField {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @default false
+         */
+        "hasPrefix"?: boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix"?: boolean;
+        /**
+          * @default ''
+         */
+        "helpText"?: string;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        "onValuesChange"?: (event: MultiselectFieldCustomEvent<string[]>) => void;
+        /**
+          * @default []
+         */
+        "options"?: MultiselectOption[];
+        /**
+          * @default 'Select options'
+         */
+        "placeholder"?: string;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default []
+         */
+        "values"?: string[];
+    }
+    interface SelectField {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @default false
+         */
+        "hasPrefix"?: boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix"?: boolean;
+        /**
+          * @default ''
+         */
+        "helpText"?: string;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        "onValueChange"?: (event: SelectFieldCustomEvent<string>) => void;
+        /**
+          * @default []
+         */
+        "options"?: SelectFieldOption[];
+        /**
+          * @default 'Select one option'
+         */
+        "placeholder"?: string;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default false
+         */
+        "valid"?: boolean;
+        /**
+          * @default ''
+         */
+        "value"?: string;
+    }
+    interface TextareaField {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @default false
+         */
+        "hasPrefix"?: boolean;
+        /**
+          * @default true
+         */
+        "hasSuffix"?: boolean;
+        /**
+          * @default ''
+         */
+        "helpText"?: string;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * When greater than 0, shows a character counter (current / maximum) before help or error.
+          * @default 0
+         */
+        "maxLength"?: number;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default false
+         */
+        "valid"?: boolean;
+    }
+    interface UiButton {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default false
+         */
+        "fullWidth"?: boolean;
+        /**
+          * @default ''
+         */
+        "icon"?: string;
+        /**
+          * @default false
+         */
+        "iconOnly"?: boolean;
+        /**
+          * @default 'left'
+         */
+        "iconPosition"?: 'left' | 'right';
+        "label"?: string;
+        /**
+          * @default false
+         */
+        "loading"?: boolean;
+        /**
+          * @default 'medium'
+         */
+        "size"?: 'small' | 'medium' | 'large';
+        /**
+          * @default 'button'
+         */
+        "type"?: 'button' | 'submit' | 'reset';
+        /**
+          * @default 'primary'
+         */
+        "variant"?: 'primary' | 'secondary' | 'ghost' | 'only-icon';
+    }
+    interface UiDropdown {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default false
+         */
+        "multiple"?: boolean;
+        /**
+          * @default false
+         */
+        "noPrefix"?: boolean;
+        /**
+          * @default false
+         */
+        "noSuffix"?: boolean;
+        "onValueChange"?: (event: UiDropdownCustomEvent<string>) => void;
+        "onValuesChange"?: (event: UiDropdownCustomEvent<string[]>) => void;
+        /**
+          * @default []
+         */
+        "options"?: DropdownOption[];
+        /**
+          * @default 'Select one option'
+         */
+        "placeholder"?: string;
+        /**
+          * @default ''
+         */
+        "value"?: string;
+        /**
+          * @default []
+         */
+        "values"?: string[];
+    }
+    interface UiInput {
+        /**
+          * @default ''
+         */
+        "ariaDescription"?: string;
+        /**
+          * @default 'off'
+         */
+        "autocomplete"?: string;
+        /**
+          * @default ''
+         */
+        "describedBy"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default ''
+         */
+        "name"?: string;
+        "onFieldBlur"?: (event: UiInputCustomEvent<void>) => void;
+        "onFieldFocus"?: (event: UiInputCustomEvent<void>) => void;
+        "onValueChange"?: (event: UiInputCustomEvent<string>) => void;
+        /**
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default 'text'
+         */
+        "type"?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+        /**
+          * @default false
+         */
+        "valid"?: boolean;
+        /**
+          * @default ''
+         */
+        "value"?: string;
+    }
+    interface UiTextarea {
+        /**
+          * @default ''
+         */
+        "ariaDescription"?: string;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * HTML `maxlength`; use with `textarea-field` when showing a maximum character counter.
+         */
+        "maxLength"?: number;
+        /**
+          * @default ''
+         */
+        "name"?: string;
+        "onFieldBlur"?: (event: UiTextareaCustomEvent<void>) => void;
+        "onFieldFocus"?: (event: UiTextareaCustomEvent<void>) => void;
+        "onValueChange"?: (event: UiTextareaCustomEvent<string>) => void;
+        /**
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * @default false
+         */
+        "readonly"?: boolean;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default 3
+         */
+        "rows"?: number;
+        /**
+          * @default false
+         */
+        "valid"?: boolean;
+        /**
+          * @default ''
+         */
+        "value"?: string;
     }
 
-    interface MyComponentAttributes {
-        "first": string;
-        "middle": string;
-        "last": string;
+    interface CheckboxFieldAttributes {
+        "inputId": string;
+        "label": string;
+        "helpText": string;
+        "errorMessage": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "required": boolean;
+        "invalid": boolean;
+    }
+    interface InputFieldAttributes {
+        "inputId": string;
+        "label": string;
+        "helpText": string;
+        "errorMessage": string;
+        "disabled": boolean;
+        "required": boolean;
+        "invalid": boolean;
+        "valid": boolean;
+        "hasPrefix": boolean;
+        "hasSuffix": boolean;
+    }
+    interface MultiselectFieldAttributes {
+        "inputId": string;
+        "label": string;
+        "helpText": string;
+        "errorMessage": string;
+        "disabled": boolean;
+        "required": boolean;
+        "invalid": boolean;
+        "hasPrefix": boolean;
+        "hasSuffix": boolean;
+        "placeholder": string;
+    }
+    interface SelectFieldAttributes {
+        "inputId": string;
+        "label": string;
+        "helpText": string;
+        "errorMessage": string;
+        "disabled": boolean;
+        "required": boolean;
+        "invalid": boolean;
+        "valid": boolean;
+        "hasPrefix": boolean;
+        "hasSuffix": boolean;
+        "value": string;
+        "placeholder": string;
+    }
+    interface TextareaFieldAttributes {
+        "inputId": string;
+        "label": string;
+        "helpText": string;
+        "errorMessage": string;
+        "disabled": boolean;
+        "required": boolean;
+        "invalid": boolean;
+        "valid": boolean;
+        "hasPrefix": boolean;
+        "hasSuffix": boolean;
+        "maxLength": number;
+    }
+    interface UiButtonAttributes {
+        "label": string;
+        "variant": 'primary' | 'secondary' | 'ghost' | 'only-icon';
+        "size": 'small' | 'medium' | 'large';
+        "disabled": boolean;
+        "loading": boolean;
+        "type": 'button' | 'submit' | 'reset';
+        "iconOnly": boolean;
+        "icon": string;
+        "iconPosition": 'left' | 'right';
+        "fullWidth": boolean;
+    }
+    interface UiDropdownAttributes {
+        "placeholder": string;
+        "disabled": boolean;
+        "multiple": boolean;
+        "value": string;
+        "noSuffix": boolean;
+        "noPrefix": boolean;
+    }
+    interface UiInputAttributes {
+        "inputId": string;
+        "name": string;
+        "type": 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+        "placeholder": string;
+        "value": string;
+        "disabled": boolean;
+        "required": boolean;
+        "readonly": boolean;
+        "autocomplete": string;
+        "invalid": boolean;
+        "valid": boolean;
+        "describedBy": string;
+        "ariaDescription": string;
+    }
+    interface UiTextareaAttributes {
+        "inputId": string;
+        "name": string;
+        "placeholder": string;
+        "value": string;
+        "rows": number;
+        "maxLength": number;
+        "disabled": boolean;
+        "required": boolean;
+        "readonly": boolean;
+        "invalid": boolean;
+        "valid": boolean;
+        "ariaDescription": string;
     }
 
     interface IntrinsicElements {
-        "my-component": Omit<MyComponent, keyof MyComponentAttributes> & { [K in keyof MyComponent & keyof MyComponentAttributes]?: MyComponent[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `attr:${K}`]?: MyComponentAttributes[K] } & { [K in keyof MyComponent & keyof MyComponentAttributes as `prop:${K}`]?: MyComponent[K] };
+        "checkbox-field": Omit<CheckboxField, keyof CheckboxFieldAttributes> & { [K in keyof CheckboxField & keyof CheckboxFieldAttributes]?: CheckboxField[K] } & { [K in keyof CheckboxField & keyof CheckboxFieldAttributes as `attr:${K}`]?: CheckboxFieldAttributes[K] } & { [K in keyof CheckboxField & keyof CheckboxFieldAttributes as `prop:${K}`]?: CheckboxField[K] };
+        "input-field": Omit<InputField, keyof InputFieldAttributes> & { [K in keyof InputField & keyof InputFieldAttributes]?: InputField[K] } & { [K in keyof InputField & keyof InputFieldAttributes as `attr:${K}`]?: InputFieldAttributes[K] } & { [K in keyof InputField & keyof InputFieldAttributes as `prop:${K}`]?: InputField[K] };
+        "multiselect-field": Omit<MultiselectField, keyof MultiselectFieldAttributes> & { [K in keyof MultiselectField & keyof MultiselectFieldAttributes]?: MultiselectField[K] } & { [K in keyof MultiselectField & keyof MultiselectFieldAttributes as `attr:${K}`]?: MultiselectFieldAttributes[K] } & { [K in keyof MultiselectField & keyof MultiselectFieldAttributes as `prop:${K}`]?: MultiselectField[K] };
+        "select-field": Omit<SelectField, keyof SelectFieldAttributes> & { [K in keyof SelectField & keyof SelectFieldAttributes]?: SelectField[K] } & { [K in keyof SelectField & keyof SelectFieldAttributes as `attr:${K}`]?: SelectFieldAttributes[K] } & { [K in keyof SelectField & keyof SelectFieldAttributes as `prop:${K}`]?: SelectField[K] };
+        "textarea-field": Omit<TextareaField, keyof TextareaFieldAttributes> & { [K in keyof TextareaField & keyof TextareaFieldAttributes]?: TextareaField[K] } & { [K in keyof TextareaField & keyof TextareaFieldAttributes as `attr:${K}`]?: TextareaFieldAttributes[K] } & { [K in keyof TextareaField & keyof TextareaFieldAttributes as `prop:${K}`]?: TextareaField[K] };
+        "ui-button": Omit<UiButton, keyof UiButtonAttributes> & { [K in keyof UiButton & keyof UiButtonAttributes]?: UiButton[K] } & { [K in keyof UiButton & keyof UiButtonAttributes as `attr:${K}`]?: UiButtonAttributes[K] } & { [K in keyof UiButton & keyof UiButtonAttributes as `prop:${K}`]?: UiButton[K] };
+        "ui-dropdown": Omit<UiDropdown, keyof UiDropdownAttributes> & { [K in keyof UiDropdown & keyof UiDropdownAttributes]?: UiDropdown[K] } & { [K in keyof UiDropdown & keyof UiDropdownAttributes as `attr:${K}`]?: UiDropdownAttributes[K] } & { [K in keyof UiDropdown & keyof UiDropdownAttributes as `prop:${K}`]?: UiDropdown[K] };
+        "ui-input": Omit<UiInput, keyof UiInputAttributes> & { [K in keyof UiInput & keyof UiInputAttributes]?: UiInput[K] } & { [K in keyof UiInput & keyof UiInputAttributes as `attr:${K}`]?: UiInputAttributes[K] } & { [K in keyof UiInput & keyof UiInputAttributes as `prop:${K}`]?: UiInput[K] };
+        "ui-textarea": Omit<UiTextarea, keyof UiTextareaAttributes> & { [K in keyof UiTextarea & keyof UiTextareaAttributes]?: UiTextarea[K] } & { [K in keyof UiTextarea & keyof UiTextareaAttributes as `attr:${K}`]?: UiTextareaAttributes[K] } & { [K in keyof UiTextarea & keyof UiTextareaAttributes as `prop:${K}`]?: UiTextarea[K] };
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.IntrinsicElements["my-component"] & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "checkbox-field": LocalJSX.IntrinsicElements["checkbox-field"] & JSXBase.HTMLAttributes<HTMLCheckboxFieldElement>;
+            "input-field": LocalJSX.IntrinsicElements["input-field"] & JSXBase.HTMLAttributes<HTMLInputFieldElement>;
+            "multiselect-field": LocalJSX.IntrinsicElements["multiselect-field"] & JSXBase.HTMLAttributes<HTMLMultiselectFieldElement>;
+            "select-field": LocalJSX.IntrinsicElements["select-field"] & JSXBase.HTMLAttributes<HTMLSelectFieldElement>;
+            "textarea-field": LocalJSX.IntrinsicElements["textarea-field"] & JSXBase.HTMLAttributes<HTMLTextareaFieldElement>;
+            "ui-button": LocalJSX.IntrinsicElements["ui-button"] & JSXBase.HTMLAttributes<HTMLUiButtonElement>;
+            "ui-dropdown": LocalJSX.IntrinsicElements["ui-dropdown"] & JSXBase.HTMLAttributes<HTMLUiDropdownElement>;
+            "ui-input": LocalJSX.IntrinsicElements["ui-input"] & JSXBase.HTMLAttributes<HTMLUiInputElement>;
+            "ui-textarea": LocalJSX.IntrinsicElements["ui-textarea"] & JSXBase.HTMLAttributes<HTMLUiTextareaElement>;
         }
     }
 }

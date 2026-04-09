@@ -1,0 +1,50 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+@import "../../global/field.css";
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+.field {
+  @apply flex flex-col gap-1;
+}
+
+.field__label{
+  @apply px-0 cursor-pointer;
+}
+
+.field__control {
+  @apply mb-0;
+}
+
+.field__checkbox {
+  @apply cursor-pointer appearance-none hidden;
+}
+
+.field__box{
+  @apply relative h-5 w-5 bg-gray-200 rounded-sm ;
+}
+
+.field__check-icon {
+  @apply text-white text-sm hidden;
+}
+
+.field__checkbox:checked + .field__box {
+  @apply relative h-5 w-5 rounded-sm cursor-pointer z-10;
+  @apply flex items-center justify-center border-0 pb-0.5;
+  background-image: var(--gradient-primary);
+}
+
+.field__checkbox:checked + .field__box .field__check-icon {
+  @apply block;
+}
+
+.field__checkbox .field__help{
+  @apply mt-0;
+}
+
+.field--invalid .field__label {
+  @apply text-error-500;
+}

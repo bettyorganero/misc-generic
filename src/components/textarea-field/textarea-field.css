@@ -1,0 +1,37 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+@import "../../global/field.css";
+
+.field__content {
+  @apply rounded-2xl;
+}
+
+.field--textarea .field__control {
+  @apply items-start rounded-3xl py-4;
+}
+
+.field__prefix,
+.field__suffix {
+  @apply pt-1 mt-0 items-start;
+}
+
+.field__footer {
+  @apply flex flex-wrap items-center gap-2 ml-7;
+}
+
+.field__counter {
+  @apply text-sm bg-gray-50 w-fit py-1.5 rounded-sm shrink-0;
+  @apply text-gray-600 px-3 font-normal;
+}
+
+.field__help {
+  @apply ml-0;
+}
+
+.field__error {
+  @apply ml-0;
+}
+
+.field--disabled .field__counter {
+  @apply opacity-40;
+}
