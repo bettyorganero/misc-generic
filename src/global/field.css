@@ -70,6 +70,7 @@
 .field--disabled .field__error,
 .field--disabled .field__prefix,
 .field--disabled .field__suffix,
+.field--disabled .field__number-stepper,
 .field--disabled .field__content {
   @apply opacity-40 cursor-not-allowed;
 }

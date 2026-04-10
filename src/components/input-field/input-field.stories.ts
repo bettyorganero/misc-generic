@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/web-components';
 type InputFieldArgs = {
   inputId: string;
   label: string;
+  type: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
   helpText: string;
   errorMessage: string;
   disabled: boolean;
@@ -12,9 +13,11 @@ type InputFieldArgs = {
   valid: boolean;
   placeholder: string;
   value: string;
-  type: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
   hasPrefix: boolean;
   hasSuffix: boolean;
+  numberStep: number;
+  numberMin?: number;
+  numberMax?: number;
 };
 
 const meta: Meta<InputFieldArgs> = {
@@ -32,33 +35,39 @@ const meta: Meta<InputFieldArgs> = {
   argTypes: {
     inputId: { control: 'text' },
     label: { control: 'text' },
+    type: {
+      control: { type: 'select' },
+      options: ['text', 'email', 'password', 'number', 'tel', 'url', 'search'],
+    },
     disabled: { control: 'boolean' },
     required: { control: 'boolean' },
     invalid: { control: 'boolean' },
     valid: { control: 'boolean' },
     placeholder: { control: 'text' },
     value: { control: 'text' },
-    type: {
-      control: { type: 'select' },
-      options: ['text', 'email', 'password', 'number', 'tel', 'url', 'search'],
-    },
     hasPrefix: { control: 'boolean' },
     hasSuffix: { control: 'boolean' },
+    numberStep: { control: 'number', if: { arg: 'type', eq: 'number' } },
+    numberMin: { control: 'number', if: { arg: 'type', eq: 'number' } },
+    numberMax: { control: 'number', if: { arg: 'type', eq: 'number' } },
     helpText: { control: 'text', if: { arg: 'hasSuffix', eq: true } },
     errorMessage: { control: 'text', if: { arg: 'hasSuffix', eq: true } },
   },
   args: {
     inputId: 'customer-email',
     label: 'Email',
+    type: 'email',
     disabled: false,
     required: false,
     invalid: false,
     valid: false,
     placeholder: 'you@example.com',
     value: '',
-    type: 'email',
     hasPrefix: true,
     hasSuffix: true,
+    numberStep: 1,
+    numberMin: 0,
+    numberMax: 100,
     helpText: 'We will never share your email.',
     errorMessage: 'Email is required.',
   },
@@ -66,16 +75,22 @@ const meta: Meta<InputFieldArgs> = {
     <input-field
       .inputId=${args.inputId}
       .label=${args.label}
+      .type=${args.type}
       .disabled=${args.disabled}
       .required=${args.required}
       .invalid=${args.invalid}
       .valid=${args.valid}
       .hasPrefix=${args.hasPrefix}
       .hasSuffix=${args.hasSuffix}
-      .helpText=${args.hasSuffix ? args.helpText : ''}
-      .errorMessage=${args.hasSuffix ? args.errorMessage : ''}
+      .numberStep=${args.numberStep}
+      .numberMin=${args.numberMin}
+      .numberMax=${args.numberMax}
+      .helpText=${args.helpText}
+      .errorMessage=${args.errorMessage}
     >
-      ${args.hasPrefix ? html`<i slot="prefix" class="fa-solid fa-envelope"></i>` : null}
+      ${args.hasPrefix
+        ? html`<i slot="prefix" class=${args.type === 'number' ? 'fa-solid fa-hashtag' : 'fa-solid fa-envelope'}></i>`
+        : null}
 
       <ui-input
         slot="control"
@@ -135,5 +150,21 @@ export const Disabled: StoryObj<InputFieldArgs> = {
   args: {
     disabled: true,
     hasSuffix: true,
+  },
+};
+
+export const NumberType: StoryObj<InputFieldArgs> = {
+  args: {
+    inputId: 'quantity',
+    label: 'Quantity',
+    type: 'number',
+    value: '10',
+    placeholder: '0',
+    hasPrefix: false,
+    hasSuffix: false,
+    numberStep: 1,
+    numberMin: 0,
+    numberMax: 99,
+    helpText: 'Choose a quantity.',
   },
 };

@@ -75,10 +75,20 @@ export namespace Components {
           * @default ''
          */
         "label": string;
+        "numberMax"?: number;
+        "numberMin"?: number;
+        /**
+          * @default 1
+         */
+        "numberStep": number;
         /**
           * @default false
          */
         "required": boolean;
+        /**
+          * @default 'text'
+         */
+        "type": 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
         /**
           * @default false
          */
@@ -833,10 +843,20 @@ declare namespace LocalJSX {
           * @default ''
          */
         "label"?: string;
+        "numberMax"?: number;
+        "numberMin"?: number;
+        /**
+          * @default 1
+         */
+        "numberStep"?: number;
         /**
           * @default false
          */
         "required"?: boolean;
+        /**
+          * @default 'text'
+         */
+        "type"?: 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
         /**
           * @default false
          */
@@ -1328,6 +1348,10 @@ declare namespace LocalJSX {
         "valid": boolean;
         "hasPrefix": boolean;
         "hasSuffix": boolean;
+        "type": 'text' | 'email' | 'password' | 'number' | 'tel' | 'url' | 'search';
+        "numberStep": number;
+        "numberMin": number;
+        "numberMax": number;
     }
     interface MultiselectFieldAttributes {
         "inputId": string;

@@ -21,3 +21,13 @@
 .ui-input:disabled {
   @apply cursor-not-allowed;
 }
+
+.ui-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.ui-input[type='number']::-webkit-outer-spin-button,
+.ui-input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

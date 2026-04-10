@@ -1,3 +1,20 @@
 @config "../../../tailwind.config";
 @reference "tailwindcss";
 @import "../../global/field.css";
+
+.field__number-stepper {
+  @apply inline-flex h-10 w-7 flex-col overflow-hidden;
+}
+
+.field__number-step-btn {
+  @apply flex h-1/2 w-full items-center justify-center;
+  @apply border-0 bg-transparent p-0 outline-none cursor-pointer;
+}
+
+.field__number-step-btn:hover {
+  @apply bg-gray-100;
+}
+
+.field__number-chevron {
+  @apply text-xs text-secondary-600;
+}
