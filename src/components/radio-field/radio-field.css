@@ -11,7 +11,7 @@
   @apply flex flex-col gap-1;
 }
 
-.field__label{
+.field__label {
   @apply px-0 cursor-pointer;
 }
 
@@ -19,35 +19,37 @@
   @apply mb-0;
 }
 
-.field__checkbox {
+.field__radio {
   @apply cursor-pointer appearance-none hidden;
 }
 
-.field__box{
-  @apply relative h-5 w-5 bg-gray-200 rounded-sm cursor-pointer;
+.field__circle {
+  @apply relative h-5 w-5 bg-gray-200 rounded-full;
+  @apply flex items-center justify-center;
+  @apply cursor-pointer;
 }
 
-.field__check-icon {
-  @apply text-white text-sm hidden;
+.field__dot {
+  @apply h-2.5 w-2.5 rounded-full hidden bg-white;
 }
 
-.field__checkbox:checked + .field__box {
-  @apply relative h-5 w-5 rounded-sm cursor-pointer z-10;
-  @apply flex items-center justify-center border-0 pb-0.5;
+.field__radio:checked + .field__circle {
+  @apply cursor-pointer z-10 border-0;
   background-image: var(--gradient-primary);
 }
 
-.field__checkbox:checked + .field__box .field__check-icon {
+.field__radio:checked + .field__circle .field__dot {
   @apply block;
 }
 
-.field__checkbox .field__help{
+.field__radio .field__help {
   @apply mt-0;
 }
 
 .field--invalid .field__label {
   @apply text-error-500;
 }
+
 
 .field--disabled .field__control,
 .field--disabled .field__label {

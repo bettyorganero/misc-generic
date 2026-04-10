@@ -68,9 +68,12 @@
 
 .field--disabled .field__help,
 .field--disabled .field__error,
-.field--disabled .field__content,
 .field--disabled .field__prefix,
 .field--disabled .field__suffix,
+.field--disabled .field__content {
+  @apply opacity-40 cursor-not-allowed;
+}
+
 .field--disabled .field__control {
-  @apply opacity-40;
+  @apply opacity-100;
 }

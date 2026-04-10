@@ -1,0 +1,155 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+@import "../../global/field.css";
+
+:host {
+  display: block;
+}
+
+.slider {
+  @apply inline-flex w-full flex-col gap-2;
+}
+
+
+.slider__range-wrapper {
+  @apply relative mt-2;
+}
+
+.slider__range-wrapper--double {
+  @apply h-5;
+}
+
+.slider__range-base,
+.slider__range-active {
+  @apply absolute top-1/2 h-2 -translate-y-1/2 rounded-full;
+}
+
+.slider__range-base {
+  @apply left-0 w-full bg-gray-200;
+}
+
+.slider__range-active {
+  left: var(--range-start);
+  width: calc(var(--range-end) - var(--range-start));
+  background: linear-gradient(to right, var(--color-primary-500), var(--color-secondary-500));
+}
+
+.slider__tooltip {
+  @apply pointer-events-none absolute -top-8 rounded-md bg-white px-2 py-1 text-xs text-gray-600;
+  box-shadow: var(--shadow-base);
+  transform: translateX(-50%);
+}
+
+.slider__input {
+  --slider-progress: 0%;
+  @apply h-2 w-full cursor-pointer appearance-none rounded-full outline-none;
+  background: linear-gradient(
+    to right,
+    var(--color-primary-500) 0%,
+    var(--color-secondary-500) var(--slider-progress),
+    var(--color-gray-200) var(--slider-progress),
+    var(--color-gray-200) 100%
+  );
+}
+
+.slider__input::-webkit-slider-thumb {
+  @apply h-5 w-5 appearance-none rounded-full bg-white;
+  box-shadow: var(--shadow-base);
+}
+
+.slider__input::-moz-range-thumb {
+  @apply h-5 w-5 rounded-full border-0 bg-white;
+  box-shadow: var(--shadow-base);
+}
+
+.slider__input::-moz-range-track {
+  @apply bg-transparent;
+}
+
+.slider__double-input {
+  @apply absolute left-0 top-0 h-5 w-full appearance-none bg-transparent;
+  pointer-events: none;
+}
+
+.slider__double-input::-webkit-slider-thumb {
+  @apply h-5 w-5 appearance-none rounded-full bg-white;
+  box-shadow: var(--shadow-base);
+  pointer-events: auto;
+}
+
+.slider__double-input::-moz-range-thumb {
+  @apply h-5 w-5 rounded-full border-0 bg-white;
+  box-shadow: var(--shadow-base);
+  pointer-events: auto;
+}
+
+.slider__double-input::-webkit-slider-runnable-track,
+.slider__double-input::-moz-range-track {
+  @apply bg-transparent;
+}
+
+.slider__limits {
+  @apply flex items-center justify-between text-xs text-gray-500;
+}
+
+.slider__manual-control {
+  @apply relative mx-auto;
+}
+
+.slider__range-manuals {
+  @apply mx-auto flex items-center gap-2;
+}
+
+.slider__manual-input {
+  @apply mx-auto w-24 h-5 appearance-none text-center text-gray-600 outline-none;
+  @apply bg-gray-100 rounded-full border-0 cursor-pointer py-1.5;
+}
+
+.slider__manual-input:focus {
+  @apply border-primary-500;
+}
+
+.slider__manual-input::-webkit-outer-spin-button,
+.slider__manual-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.slider__stepper {
+  @apply absolute right-0 top-0 flex h-full w-7 flex-col;
+  @apply overflow-hidden rounded-r-full border-0 outline-none bg-gray-200;
+}
+
+.slider__stepper-btn {
+  @apply flex h-1/2 w-full items-center justify-center;
+  @apply bg-gray-200 border-0 outline-none hover:bg-gray-300;
+  @apply cursor-pointer;
+}
+
+.slider__stepper-btn + .slider__stepper-btn {
+  @apply border-0;
+}
+
+.slider__chevron {
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+}
+
+.slider__chevron--up {
+  border-bottom: 5px solid var(--color-gray-500);
+}
+
+.slider__chevron--down {
+  border-top: 5px solid var(--color-gray-500);
+}
+
+:host(.slider--disabled) .slider {
+  @apply opacity-40 cursor-not-allowed;
+}
+
+:host(.slider--disabled) .slider__input {
+  @apply cursor-not-allowed;
+}
+

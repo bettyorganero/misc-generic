@@ -134,6 +134,48 @@ export namespace Components {
          */
         "values": string[];
     }
+    interface RadioField {
+        /**
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage": string;
+        /**
+          * @default ''
+         */
+        "helpText": string;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default false
+         */
+        "invalid": boolean;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default ''
+         */
+        "name": string;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default ''
+         */
+        "value": string;
+    }
     interface SelectField {
         /**
           * @default false
@@ -188,6 +230,52 @@ export namespace Components {
          */
         "value": string;
     }
+    interface SliderField {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default 100
+         */
+        "max": number;
+        /**
+          * @default 75
+         */
+        "maxValue": number;
+        /**
+          * @default 0
+         */
+        "min": number;
+        /**
+          * @default 25
+         */
+        "minValue": number;
+        /**
+          * @default false
+         */
+        "range": boolean;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default 1
+         */
+        "step": number;
+        /**
+          * @default 50
+         */
+        "value": number;
+    }
     interface TextareaField {
         /**
           * @default false
@@ -234,6 +322,40 @@ export namespace Components {
           * @default false
          */
         "valid": boolean;
+    }
+    interface ToggleButton {
+        /**
+          * @default false
+         */
+        "checked": boolean;
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        /**
+          * @default 'False'
+         */
+        "falseLabel": string;
+        /**
+          * @default ''
+         */
+        "inputId": string;
+        /**
+          * @default ''
+         */
+        "label": string;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default 'True'
+         */
+        "trueLabel": string;
+        /**
+          * @default 'switch'
+         */
+        "variant": 'switch' | 'text';
     }
     interface UiButton {
         /**
@@ -421,9 +543,21 @@ export interface MultiselectFieldCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLMultiselectFieldElement;
 }
+export interface RadioFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLRadioFieldElement;
+}
 export interface SelectFieldCustomEvent<T> extends CustomEvent<T> {
     detail: T;
     target: HTMLSelectFieldElement;
+}
+export interface SliderFieldCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLSliderFieldElement;
+}
+export interface ToggleButtonCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLToggleButtonElement;
 }
 export interface UiDropdownCustomEvent<T> extends CustomEvent<T> {
     detail: T;
@@ -478,6 +612,23 @@ declare global {
         prototype: HTMLMultiselectFieldElement;
         new (): HTMLMultiselectFieldElement;
     };
+    interface HTMLRadioFieldElementEventMap {
+        "checkedChange": boolean;
+    }
+    interface HTMLRadioFieldElement extends Components.RadioField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLRadioFieldElementEventMap>(type: K, listener: (this: HTMLRadioFieldElement, ev: RadioFieldCustomEvent<HTMLRadioFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLRadioFieldElementEventMap>(type: K, listener: (this: HTMLRadioFieldElement, ev: RadioFieldCustomEvent<HTMLRadioFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLRadioFieldElement: {
+        prototype: HTMLRadioFieldElement;
+        new (): HTMLRadioFieldElement;
+    };
     interface HTMLSelectFieldElementEventMap {
         "valueChange": string;
     }
@@ -495,11 +646,46 @@ declare global {
         prototype: HTMLSelectFieldElement;
         new (): HTMLSelectFieldElement;
     };
+    interface HTMLSliderFieldElementEventMap {
+        "valueChange": number;
+        "rangeChange": { min: number; max: number };
+    }
+    interface HTMLSliderFieldElement extends Components.SliderField, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLSliderFieldElementEventMap>(type: K, listener: (this: HTMLSliderFieldElement, ev: SliderFieldCustomEvent<HTMLSliderFieldElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLSliderFieldElementEventMap>(type: K, listener: (this: HTMLSliderFieldElement, ev: SliderFieldCustomEvent<HTMLSliderFieldElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLSliderFieldElement: {
+        prototype: HTMLSliderFieldElement;
+        new (): HTMLSliderFieldElement;
+    };
     interface HTMLTextareaFieldElement extends Components.TextareaField, HTMLStencilElement {
     }
     var HTMLTextareaFieldElement: {
         prototype: HTMLTextareaFieldElement;
         new (): HTMLTextareaFieldElement;
+    };
+    interface HTMLToggleButtonElementEventMap {
+        "checkedChange": boolean;
+    }
+    interface HTMLToggleButtonElement extends Components.ToggleButton, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLToggleButtonElementEventMap>(type: K, listener: (this: HTMLToggleButtonElement, ev: ToggleButtonCustomEvent<HTMLToggleButtonElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLToggleButtonElementEventMap>(type: K, listener: (this: HTMLToggleButtonElement, ev: ToggleButtonCustomEvent<HTMLToggleButtonElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLToggleButtonElement: {
+        prototype: HTMLToggleButtonElement;
+        new (): HTMLToggleButtonElement;
     };
     interface HTMLUiButtonElement extends Components.UiButton, HTMLStencilElement {
     }
@@ -567,8 +753,11 @@ declare global {
         "checkbox-field": HTMLCheckboxFieldElement;
         "input-field": HTMLInputFieldElement;
         "multiselect-field": HTMLMultiselectFieldElement;
+        "radio-field": HTMLRadioFieldElement;
         "select-field": HTMLSelectFieldElement;
+        "slider-field": HTMLSliderFieldElement;
         "textarea-field": HTMLTextareaFieldElement;
+        "toggle-button": HTMLToggleButtonElement;
         "ui-button": HTMLUiButtonElement;
         "ui-dropdown": HTMLUiDropdownElement;
         "ui-input": HTMLUiInputElement;
@@ -704,6 +893,49 @@ declare namespace LocalJSX {
          */
         "values"?: string[];
     }
+    interface RadioField {
+        /**
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "errorMessage"?: string;
+        /**
+          * @default ''
+         */
+        "helpText"?: string;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default false
+         */
+        "invalid"?: boolean;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * @default ''
+         */
+        "name"?: string;
+        "onCheckedChange"?: (event: RadioFieldCustomEvent<boolean>) => void;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default ''
+         */
+        "value"?: string;
+    }
     interface SelectField {
         /**
           * @default false
@@ -759,6 +991,54 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface SliderField {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        /**
+          * @default 100
+         */
+        "max"?: number;
+        /**
+          * @default 75
+         */
+        "maxValue"?: number;
+        /**
+          * @default 0
+         */
+        "min"?: number;
+        /**
+          * @default 25
+         */
+        "minValue"?: number;
+        "onRangeChange"?: (event: SliderFieldCustomEvent<{ min: number; max: number }>) => void;
+        "onValueChange"?: (event: SliderFieldCustomEvent<number>) => void;
+        /**
+          * @default false
+         */
+        "range"?: boolean;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default 1
+         */
+        "step"?: number;
+        /**
+          * @default 50
+         */
+        "value"?: number;
+    }
     interface TextareaField {
         /**
           * @default false
@@ -805,6 +1085,41 @@ declare namespace LocalJSX {
           * @default false
          */
         "valid"?: boolean;
+    }
+    interface ToggleButton {
+        /**
+          * @default false
+         */
+        "checked"?: boolean;
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        /**
+          * @default 'False'
+         */
+        "falseLabel"?: string;
+        /**
+          * @default ''
+         */
+        "inputId"?: string;
+        /**
+          * @default ''
+         */
+        "label"?: string;
+        "onCheckedChange"?: (event: ToggleButtonCustomEvent<boolean>) => void;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default 'True'
+         */
+        "trueLabel"?: string;
+        /**
+          * @default 'switch'
+         */
+        "variant"?: 'switch' | 'text';
     }
     interface UiButton {
         /**
@@ -1026,6 +1341,18 @@ declare namespace LocalJSX {
         "hasSuffix": boolean;
         "placeholder": string;
     }
+    interface RadioFieldAttributes {
+        "inputId": string;
+        "name": string;
+        "value": string;
+        "label": string;
+        "helpText": string;
+        "errorMessage": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "required": boolean;
+        "invalid": boolean;
+    }
     interface SelectFieldAttributes {
         "inputId": string;
         "label": string;
@@ -1040,6 +1367,19 @@ declare namespace LocalJSX {
         "value": string;
         "placeholder": string;
     }
+    interface SliderFieldAttributes {
+        "inputId": string;
+        "label": string;
+        "min": number;
+        "max": number;
+        "step": number;
+        "value": number;
+        "range": boolean;
+        "minValue": number;
+        "maxValue": number;
+        "disabled": boolean;
+        "required": boolean;
+    }
     interface TextareaFieldAttributes {
         "inputId": string;
         "label": string;
@@ -1052,6 +1392,16 @@ declare namespace LocalJSX {
         "hasPrefix": boolean;
         "hasSuffix": boolean;
         "maxLength": number;
+    }
+    interface ToggleButtonAttributes {
+        "inputId": string;
+        "label": string;
+        "checked": boolean;
+        "disabled": boolean;
+        "variant": 'switch' | 'text';
+        "falseLabel": string;
+        "trueLabel": string;
+        "required": boolean;
     }
     interface UiButtonAttributes {
         "label": string;
@@ -1107,8 +1457,11 @@ declare namespace LocalJSX {
         "checkbox-field": Omit<CheckboxField, keyof CheckboxFieldAttributes> & { [K in keyof CheckboxField & keyof CheckboxFieldAttributes]?: CheckboxField[K] } & { [K in keyof CheckboxField & keyof CheckboxFieldAttributes as `attr:${K}`]?: CheckboxFieldAttributes[K] } & { [K in keyof CheckboxField & keyof CheckboxFieldAttributes as `prop:${K}`]?: CheckboxField[K] };
         "input-field": Omit<InputField, keyof InputFieldAttributes> & { [K in keyof InputField & keyof InputFieldAttributes]?: InputField[K] } & { [K in keyof InputField & keyof InputFieldAttributes as `attr:${K}`]?: InputFieldAttributes[K] } & { [K in keyof InputField & keyof InputFieldAttributes as `prop:${K}`]?: InputField[K] };
         "multiselect-field": Omit<MultiselectField, keyof MultiselectFieldAttributes> & { [K in keyof MultiselectField & keyof MultiselectFieldAttributes]?: MultiselectField[K] } & { [K in keyof MultiselectField & keyof MultiselectFieldAttributes as `attr:${K}`]?: MultiselectFieldAttributes[K] } & { [K in keyof MultiselectField & keyof MultiselectFieldAttributes as `prop:${K}`]?: MultiselectField[K] };
+        "radio-field": Omit<RadioField, keyof RadioFieldAttributes> & { [K in keyof RadioField & keyof RadioFieldAttributes]?: RadioField[K] } & { [K in keyof RadioField & keyof RadioFieldAttributes as `attr:${K}`]?: RadioFieldAttributes[K] } & { [K in keyof RadioField & keyof RadioFieldAttributes as `prop:${K}`]?: RadioField[K] };
         "select-field": Omit<SelectField, keyof SelectFieldAttributes> & { [K in keyof SelectField & keyof SelectFieldAttributes]?: SelectField[K] } & { [K in keyof SelectField & keyof SelectFieldAttributes as `attr:${K}`]?: SelectFieldAttributes[K] } & { [K in keyof SelectField & keyof SelectFieldAttributes as `prop:${K}`]?: SelectField[K] };
+        "slider-field": Omit<SliderField, keyof SliderFieldAttributes> & { [K in keyof SliderField & keyof SliderFieldAttributes]?: SliderField[K] } & { [K in keyof SliderField & keyof SliderFieldAttributes as `attr:${K}`]?: SliderFieldAttributes[K] } & { [K in keyof SliderField & keyof SliderFieldAttributes as `prop:${K}`]?: SliderField[K] };
         "textarea-field": Omit<TextareaField, keyof TextareaFieldAttributes> & { [K in keyof TextareaField & keyof TextareaFieldAttributes]?: TextareaField[K] } & { [K in keyof TextareaField & keyof TextareaFieldAttributes as `attr:${K}`]?: TextareaFieldAttributes[K] } & { [K in keyof TextareaField & keyof TextareaFieldAttributes as `prop:${K}`]?: TextareaField[K] };
+        "toggle-button": Omit<ToggleButton, keyof ToggleButtonAttributes> & { [K in keyof ToggleButton & keyof ToggleButtonAttributes]?: ToggleButton[K] } & { [K in keyof ToggleButton & keyof ToggleButtonAttributes as `attr:${K}`]?: ToggleButtonAttributes[K] } & { [K in keyof ToggleButton & keyof ToggleButtonAttributes as `prop:${K}`]?: ToggleButton[K] };
         "ui-button": Omit<UiButton, keyof UiButtonAttributes> & { [K in keyof UiButton & keyof UiButtonAttributes]?: UiButton[K] } & { [K in keyof UiButton & keyof UiButtonAttributes as `attr:${K}`]?: UiButtonAttributes[K] } & { [K in keyof UiButton & keyof UiButtonAttributes as `prop:${K}`]?: UiButton[K] };
         "ui-dropdown": Omit<UiDropdown, keyof UiDropdownAttributes> & { [K in keyof UiDropdown & keyof UiDropdownAttributes]?: UiDropdown[K] } & { [K in keyof UiDropdown & keyof UiDropdownAttributes as `attr:${K}`]?: UiDropdownAttributes[K] } & { [K in keyof UiDropdown & keyof UiDropdownAttributes as `prop:${K}`]?: UiDropdown[K] };
         "ui-input": Omit<UiInput, keyof UiInputAttributes> & { [K in keyof UiInput & keyof UiInputAttributes]?: UiInput[K] } & { [K in keyof UiInput & keyof UiInputAttributes as `attr:${K}`]?: UiInputAttributes[K] } & { [K in keyof UiInput & keyof UiInputAttributes as `prop:${K}`]?: UiInput[K] };
@@ -1122,8 +1475,11 @@ declare module "@stencil/core" {
             "checkbox-field": LocalJSX.IntrinsicElements["checkbox-field"] & JSXBase.HTMLAttributes<HTMLCheckboxFieldElement>;
             "input-field": LocalJSX.IntrinsicElements["input-field"] & JSXBase.HTMLAttributes<HTMLInputFieldElement>;
             "multiselect-field": LocalJSX.IntrinsicElements["multiselect-field"] & JSXBase.HTMLAttributes<HTMLMultiselectFieldElement>;
+            "radio-field": LocalJSX.IntrinsicElements["radio-field"] & JSXBase.HTMLAttributes<HTMLRadioFieldElement>;
             "select-field": LocalJSX.IntrinsicElements["select-field"] & JSXBase.HTMLAttributes<HTMLSelectFieldElement>;
+            "slider-field": LocalJSX.IntrinsicElements["slider-field"] & JSXBase.HTMLAttributes<HTMLSliderFieldElement>;
             "textarea-field": LocalJSX.IntrinsicElements["textarea-field"] & JSXBase.HTMLAttributes<HTMLTextareaFieldElement>;
+            "toggle-button": LocalJSX.IntrinsicElements["toggle-button"] & JSXBase.HTMLAttributes<HTMLToggleButtonElement>;
             "ui-button": LocalJSX.IntrinsicElements["ui-button"] & JSXBase.HTMLAttributes<HTMLUiButtonElement>;
             "ui-dropdown": LocalJSX.IntrinsicElements["ui-dropdown"] & JSXBase.HTMLAttributes<HTMLUiDropdownElement>;
             "ui-input": LocalJSX.IntrinsicElements["ui-input"] & JSXBase.HTMLAttributes<HTMLUiInputElement>;

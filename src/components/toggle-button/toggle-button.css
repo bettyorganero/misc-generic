@@ -1,0 +1,91 @@
+@config "../../../tailwind.config";
+@reference "tailwindcss";
+@import "../../global/field.css";
+
+:host {
+  display: block;
+}
+
+.toggle {
+  @apply inline-flex items-center gap-3 cursor-pointer;
+}
+
+.toggle__input {
+  @apply sr-only;
+}
+
+.toggle__track {
+  @apply relative inline-flex h-6 w-11 items-center;
+  @apply rounded-full border-2 border-transparent bg-gray-200 transition-colors duration-200;
+}
+
+.toggle__thumb {
+  @apply absolute left-0.5 h-5 w-5 rounded-full;
+  @apply bg-white transition-transform duration-200;
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle__input:checked + .toggle__track {
+  @apply bg-primary;
+}
+
+.toggle__input:focus-visible + .toggle__track {
+  @apply border-primary-500;
+}
+
+:host(:focus-within) .toggle__track,
+.toggle__input:focus + .toggle__track {
+  @apply border-primary-500;
+  box-shadow: 0 0 0 1px var(--color-primary-500);
+}
+
+.toggle__input:checked + .toggle__track .toggle__thumb {
+  transform: translateX(20px);
+}
+
+.toggle__label {
+  @apply text-sm text-gray-600;
+}
+
+:host(.toggle--text) .toggle {
+  @apply gap-2;
+}
+
+.toggle__text-track {
+  @apply relative inline-flex h-10 w-36 items-center overflow-hidden;
+  @apply rounded-full border-2 border-transparent bg-gray-100;
+}
+
+.toggle__text-thumb {
+  @apply absolute left-1 top-1 bottom-1 w-[calc(50%-0.38rem)];
+  @apply rounded-full bg-white transition-transform duration-200;
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle__text-thumb--right {
+  transform: translateX(calc(100% + 0.25rem));
+}
+
+.toggle__text-option {
+  @apply relative z-10 inline-flex w-1/2 items-center justify-center;
+  @apply text-sm font-regular text-gray-400;
+}
+
+.toggle__text-option--active {
+  @apply text-gray-600 font-medium;
+}
+
+.toggle__input:focus-visible + .toggle__text-track {
+  @apply border-primary-500;
+}
+
+:host(:focus-within) .toggle__text-track,
+.toggle__input:focus + .toggle__text-track {
+  @apply border-primary-500;
+  box-shadow: 0 0 0 1px var(--color-primary-500);
+}
+
+:host(.toggle--disabled) .toggle {
+  @apply opacity-40 cursor-not-allowed;
+}
+
